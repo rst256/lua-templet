@@ -87,6 +87,10 @@ do
   local t = {}
   assert(templet.loadstring("| pi = \"${math.pi}\"")(t) == "")
   assert(t.pi == "${math.pi}")
+
+  assert(templet.loadstring("${}"        )() == ""     )
+  assert(templet.loadstring("${nil}"     )() == ""     )
+  assert(templet.loadstring("${not true}")() == "false")
 end
 
 -- test output function

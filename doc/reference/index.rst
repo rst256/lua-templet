@@ -27,7 +27,9 @@ Template preprocessor
 
          local result = {}
          local output = function(chunk)
-           table.insert(result, tostring(chunk))
+           if chunk ~= nil then
+             table.insert(result, tostring(chunk))
+           end
          end
 
       is used, and :meth:`render` returns the result of ``table.concat(result)``.
