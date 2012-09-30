@@ -153,3 +153,32 @@ do
   assert(chunks[10] == "\n")
   assert(chunks[11] == "  ")
 end
+
+-- test loadfile
+do
+  local filename = "integrate.c.in"
+  local file = assert(io.open(filename, "w"))
+  file:write([[
+  for (int i = 0; i < ${nparticle}; ++i) {
+    |for i = 1, #coord do
+    r[i].${coord[i]} = r[i].${coord[i]} + v[i].${coord[i]} * ${timestep};
+    |end
+  }
+  ]])
+  file:close()
+  local temp = templet.loadfile(filename)
+  assert(temp({coord = {"x", "y", "z"}, nparticle = 5000, timestep = 0.001}) == [[
+  for (int i = 0; i < 5000; ++i) {
+    r[i].x = r[i].x + v[i].x * 0.001;
+    r[i].y = r[i].y + v[i].y * 0.001;
+    r[i].z = r[i].z + v[i].z * 0.001;
+  }
+  ]])
+  assert(temp({coord = {"x", "y"}, nparticle = 1000, timestep = 0.002}) == [[
+  for (int i = 0; i < 1000; ++i) {
+    r[i].x = r[i].x + v[i].x * 0.002;
+    r[i].y = r[i].y + v[i].y * 0.002;
+  }
+  ]])
+  assert(os.remove(filename))
+end

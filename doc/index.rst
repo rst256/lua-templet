@@ -108,6 +108,8 @@ A template is parsed using :func:`templet.loadstring`:
    |end
    ]])
 
+Alternatively, a template is loaded from a file using :func:`templet.loadfile`.
+
 This creates a template object, which is then rendered:
 
 .. code-block:: lua

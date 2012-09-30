@@ -68,10 +68,10 @@ end
 --- Lua 5.2 deprecates loadstring
 local load = loadstring or load
 
-function _M.loadstring(s)
+local function loadtemplate(s, source)
   local result = {"local _put, _ENV = ..."}
   parse_statement(result, s)
-  local render, err = load(concat(result), s)
+  local render, err = load(concat(result), source)
   if not render then return error(err) end
   return function(env, f)
     local env = env or _G
@@ -81,6 +81,22 @@ function _M.loadstring(s)
       return render_to_function(render, f, env)
     end
   end
+end
+
+function _M.loadstring(s)
+  local status, result = pcall(loadtemplate, s, s)
+  if not status then return error(result) end
+  return result
+end
+
+function _M.loadfile(filename)
+  local f, err = io.open(filename, "r")
+  if not f then return error(err) end
+  local s = f:read("*a")
+  local status, result = pcall(loadtemplate, s, "@" .. filename)
+  if not status then return error(result) end
+  f:close()
+  return result
 end
 
 return _M

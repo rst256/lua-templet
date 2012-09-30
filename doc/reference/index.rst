@@ -10,6 +10,13 @@ Template preprocessor
 
    Parse template from string.
 
+.. function:: loadfile(filename)
+
+   :param string filename: template filename
+   :returns: :class:`templet.Template` object
+
+   Parse template from file.
+
 .. class:: Template
 
    .. method:: __call__([env[, f]])
