@@ -1,0 +1,10 @@
+% Templet for Lua
+% Peter Colberg
+% 2012-2013
+
+[![](lua-templet.png "Templet for Lua")](index.html)
+
+* [Templet for Lua](index.html)
+    + [Installing](INSTALL.html)
+    + [User's Guide](README.html)
+    + [Reference](reference.html)
