@@ -1,4 +1,6 @@
-% Installing
+---
+title: Installing
+---
 
 Templet for Lua is available from a [git repository]:
 

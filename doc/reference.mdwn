@@ -1,6 +1,8 @@
-% Reference
+---
+title: Reference
+---
 
-templet.loadstring(s)
+`templet.loadstring(s)`
 
   : Loads a template from the given string, and returns a function.
 
@@ -21,7 +23,7 @@ templet.loadstring(s)
 
     is used, and the result of `table.concat(result)` is returned.
 
-templet.loadfile(filename)
+`templet.loadfile(filename)`
 
   : Loads a template from the file with the given name, and returns a
     function as described above.

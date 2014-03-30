@@ -1,4 +1,6 @@
-% User's Guide
+---
+title: User's Guide
+---
 
 Templates may contain Lua statements and Lua expressions.
 
@@ -38,7 +40,7 @@ This creates a template object, which is then rendered:
 
 ~~~ {.lua}
 local result = temp()
-print(result)
+io.write(result)
 ~~~
 
 ~~~
@@ -92,18 +94,12 @@ is a floating-point number, and converts to its hexadecimal
 representation:
 
 ~~~ {.lua}
-local result = {}
-
-local output = function(chunk)
+temp({math = math}, function(chunk)
   if type(chunk) == "number" and math.floor(chunk) ~= chunk then
-    table.insert(result, string.format("%a", chunk))
-  else
-    table.insert(result, tostring(chunk))
+    chunk = string.format("%a", chunk)
   end
-end
-
-temp({math = math}, output)
-print(table.concat(result))
+  return io.write(chunk)
+end)
 ~~~
 
 ~~~
@@ -112,4 +108,4 @@ double x2 = 0x1.6a09e667f3bcdp+0;
 double x3 = 0x1.bb67ae8584caap+0;
 ~~~
 
-(Note that hexadecimal constants require Lua 5.2 or LuaJIT.)
+Note that hexadecimal constants require Lua 5.2 or LuaJIT.

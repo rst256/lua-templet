@@ -1,10 +1,20 @@
-% Templet for Lua
+---
+title: Templet for Lua
+---
 
-Templet is a template preprocessor written in pure [Lua], which parses
-text templates with embedded Lua statements and Lua expressions. Templet
-works with [Lua 5.1], [Lua 5.2], and [LuaJIT].
+[![](lua-templet.png "Templet for Lua")][Templet]
+[Templet] is a template preprocessor written in pure [Lua] that parses text
+templates with embedded Lua statements and expressions. Templet may be used
+to preprocess source files of any language, such as [OpenCL C].
+Templet works with [Lua 5.1], [Lua 5.2], and [LuaJIT].
 
-Consider the example of a system of non-interacting classical particles.
+[Templet]: http://colberg.org/lua-templet/
+[OpenCL C]: http://www.khronos.org/opencl/
+[Lua]: http://www.lua.org/about.html
+[Lua 5.1]: http://www.lua.org/manual/5.1/
+[Lua 5.2]: http://www.lua.org/manual/5.2/
+
+Consider a system of non-interacting classical particles.
 We would like to generate C code that moves the particles by a given
 time step. This should work for both 2 and 3 dimensional systems, and
 constant parameters should be substituted along the way.
@@ -12,6 +22,8 @@ constant parameters should be substituted along the way.
 First, the template is parsed, e.g., from a multi-line Lua string:
 
 ~~~ {.lua}
+local templet = require("templet")
+
 local temp = templet.loadstring([[
 for (int i = 0; i < ${nparticle}; ++i) {
   |for i = 1, #coord do
@@ -25,7 +37,7 @@ The template is then rendered, given a set of parameters:
 
 ~~~ {.lua}
 local env = {coord = {"x", "y", "z"}, nparticle = 5000, timestep = 0.001}
-print(temp(env))
+io.write(temp(env))
 ~~~
 
 In the resulting output, the loop has been expanded, and constants
@@ -39,7 +51,7 @@ substituted:
 
 ~~~ {.lua}
 local env = {coord = {"x", "y"}, nparticle = 1000, timestep = 0.002}
-print(temp(env))
+io.write(temp(env))
 ~~~
 
 The same template can be rendered, e.g., for a 2-dimensional system:
@@ -54,6 +66,7 @@ for (int i = 0; i < 1000; ++i) {
 The resulting C code could be passed to a just-in-time C compiler for
 immediate execution.
 
+
 Acknowledgements
 ----------------
 
@@ -63,9 +76,6 @@ Michal Januszewski and the [Sailfish] contributors for providing a
 real-world example of dynamically compiled GPU code templates in a
 simulation code.
 
-[Lua]: http://www.lua.org/about.html
-[Lua 5.1]: http://www.lua.org/manual/5.1/
-[Lua 5.2]: http://www.lua.org/manual/5.2/
 [LuaJIT]: http://luajit.org/luajit.html
 [Slightly Less Simple Lua Preprocessor]: http://lua-users.org/wiki/SlightlyLessSimpleLuaPreprocessor
 [Sailfish]: http://sailfish.us.edu.pl

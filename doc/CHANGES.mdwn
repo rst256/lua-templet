@@ -1,4 +1,6 @@
-% Releases
+---
+title: Releases
+---
 
 This document lists the changes between stable releases.
 
@@ -7,7 +9,6 @@ The version numbers follow [semantic versioning].
 [semantic versioning]: http://semver.org/spec/v2.0.0.html
 
 
-lua‑templet 1.0.0 (2013-10-29) {#v1.0.0}
-----------------------------------------
+## lua‑templet 1.0.0 (2013-10-29) {#v1.0.0}
 
   * Initial release of Templet for Lua.

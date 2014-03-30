@@ -5,21 +5,31 @@
 #
 
 PREFIX = /usr/local
+LUADIR = $(PREFIX)/share/lua/5.1
+DOCDIR = $(PREFIX)/share/doc/lua-templet
 
-INSTALL_LMOD = $(PREFIX)/share/lua/5.1/templet
-INSTALL_DIR = mkdir -p
-INSTALL_DATA = install -m 644
+INSTALL_D = mkdir -p
+INSTALL_F = install -m 644
 
-FILES_LMOD = init.lua
+FILES_LUA = init.lua
+FILES_DOC = index.mdwn INSTALL.mdwn README.mdwn reference.mdwn CHANGES.mdwn
+FILES_DOC_HTML = index.html INSTALL.html README.html reference.html CHANGES.html pandoc.css lua-templet.png
+
+all: doc
 
 test:
 	@$(MAKE) -C test
 
+doc:
+	@$(MAKE) -C doc
+
 install:
-	$(INSTALL_DIR) $(DESTDIR)$(INSTALL_LMOD)
-	cd templet && $(INSTALL_DATA) $(FILES_LMOD) $(DESTDIR)$(INSTALL_LMOD)
+	$(INSTALL_D) $(DESTDIR)$(LUADIR)/templet
+	cd templet && $(INSTALL_F) $(FILES_LUA) $(DESTDIR)$(LUADIR)/templet
+	$(INSTALL_D) $(DESTDIR)$(DOCDIR)
+	cd doc && $(INSTALL_F) $(FILES_DOC) $(FILES_DOC_HTML) $(DESTDIR)$(DOCDIR)
 
 clean:
 	@$(MAKE) -C doc clean
 
-.PHONY: test install clean
+.PHONY: test doc install clean
