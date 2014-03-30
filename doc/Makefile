@@ -1,4 +1,4 @@
-html: CHANGES.html INSTALL.html README.html index.html reference.html
+html: index.html INSTALL.html README.html examples.html reference.html CHANGES.html
 
 %.html: %.mdwn pandoc.html
 	pandoc --template=pandoc.html --css=pandoc.css --toc --toc-depth=2 -o $@ $<
