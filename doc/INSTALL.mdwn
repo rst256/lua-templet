@@ -2,6 +2,9 @@
 title: Installing
 ---
 
+Git
+---
+
 Templet for Lua is available from a [git repository]:
 
 ~~~
@@ -11,13 +14,13 @@ git clone http://git.colberg.org/lua-templet
 In the repository, checkout the latest release version:
 
 ~~~
-git checkout 1.0.0
+git checkout 1.0.1
 ~~~
 
 If you have GnuPG, verify that the tag is signed by the following key:
 
 ~~~
-git tag -v 1.0.0
+git tag -v 1.0.1
 ~~~
 
 ~~~
@@ -32,3 +35,41 @@ make test
 ~~~
 
 [git repository]: http://git.colberg.org/lua-templet
+
+
+LuaRocks
+--------
+
+Templet for Lua is available from the default [LuaRocks mirror]:
+
+~~~
+luarocks install --local lua-templet
+~~~
+
+You may wish to remove older versions before installing:
+
+~~~
+luarocks remove --local lua-templet
+~~~
+
+To use the module, set the Lua module path in your shell's startup file:
+
+~~~
+eval `luarocks path`
+~~~
+
+If the LuaRocks mirror is not available, install from the git repository above:
+
+~~~
+luarocks install --local rockspec/lua-templet-1.0.1-1.rockspec
+~~~
+
+To install the module directly from the git source, use:
+
+~~~
+luarocks make --local rockspec/lua-templet-1.0.1-1.rockspec
+~~~
+
+In this case you must manually git checkout the corresponding version beforehand.
+
+[LuaRocks mirror]: http://luarocks.org/repositories/rocks/#lua-templet
