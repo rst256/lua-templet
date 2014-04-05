@@ -18,6 +18,9 @@ description = {
 build = {
    type = "make",
    build_target = "test",
+   build_variables = {
+      LUA = "$(LUA)",
+   },
    install_variables = {
       PREFIX = "$(PREFIX)",
       LUADIR = "$(LUADIR)",
