@@ -1,7 +1,7 @@
 --
 -- Templet for Lua.
 -- Copyright © 2012 Peter Colberg.
--- For conditions of distribution and use, see copyright notice in LICENSE.
+-- Distributed under the MIT license. (See accompanying file LICENSE.)
 --
 
 local _M = {}
