@@ -40,7 +40,7 @@ make test
 LuaRocks
 --------
 
-Templet for Lua is available from the default [LuaRocks mirror]:
+Templet for Lua is available from [LuaRocks]:
 
 ~~~
 luarocks install --local lua-templet
@@ -72,4 +72,4 @@ luarocks make --local rockspec/lua-templet-1.0.1-2.rockspec
 
 In this case you must manually git checkout the corresponding version beforehand.
 
-[LuaRocks mirror]: http://luarocks.org/repositories/rocks/#lua-templet
+[LuaRocks]: http://luarocks.org/
