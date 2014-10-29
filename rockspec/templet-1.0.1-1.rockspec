@@ -1,5 +1,5 @@
-package = "lua-templet"
-version = "1.0.1-2"
+package = "templet"
+version = "1.0.1-1"
 source = {
    url = "git://git.colberg.org/lua-templet",
    tag = "1.0.1",
