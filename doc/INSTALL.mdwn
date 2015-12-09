@@ -14,13 +14,13 @@ git clone https://git.colberg.org/lua-templet
 In the repository, checkout the latest release version:
 
 ~~~
-git checkout 1.0.1
+git checkout 1.0.2
 ~~~
 
 If you have GnuPG, verify that the tag is signed by the following key:
 
 ~~~
-git tag -v 1.0.1
+git tag -v 1.0.2
 ~~~
 
 ~~~
@@ -61,13 +61,13 @@ eval `luarocks path`
 If the LuaRocks mirror is not available, install from the git repository above:
 
 ~~~
-luarocks install --local rockspec/templet-1.0.1-1.rockspec
+luarocks install --local rockspec/templet-1.0.2-1.rockspec
 ~~~
 
 To install the module directly from the git source, use:
 
 ~~~
-luarocks make --local rockspec/templet-1.0.1-1.rockspec
+luarocks make --local rockspec/templet-1.0.2-1.rockspec
 ~~~
 
 In this case you must manually git checkout the corresponding version beforehand.
