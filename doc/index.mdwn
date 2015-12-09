@@ -8,7 +8,7 @@ templates with embedded Lua statements and expressions. Templet may be used
 to preprocess source files of any language, such as [OpenCL C].
 Templet works with [Lua 5.1], [Lua 5.2], and [LuaJIT].
 
-[Templet]: http://colberg.org/lua-templet/
+[Templet]: https://colberg.org/lua-templet/
 [OpenCL C]: http://www.khronos.org/opencl/
 [Lua]: http://www.lua.org/about.html
 [Lua 5.1]: http://www.lua.org/manual/5.1/
