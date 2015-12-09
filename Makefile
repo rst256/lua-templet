@@ -11,7 +11,7 @@ DOCDIR = $(PREFIX)/share/doc/lua-templet
 INSTALL_D = mkdir -p
 INSTALL_F = install -m 644
 
-FILES_LUA = init.lua
+FILES_LUA = templet.lua
 FILES_DOC = index.mdwn INSTALL.mdwn README.mdwn examples.mdwn reference.mdwn CHANGES.mdwn
 FILES_DOC_HTML = index.html INSTALL.html README.html examples.html reference.html CHANGES.html pandoc.css lua-templet.png
 FILES_EXAMPLES_INCLUDE = include.lua
@@ -26,8 +26,8 @@ doc:
 	@$(MAKE) -C doc
 
 install:
-	$(INSTALL_D) $(DESTDIR)$(LUADIR)/templet
-	cd templet && $(INSTALL_F) $(FILES_LUA) $(DESTDIR)$(LUADIR)/templet
+	$(INSTALL_D) $(DESTDIR)$(LUADIR)
+	$(INSTALL_F) $(FILES_LUA) $(DESTDIR)$(LUADIR)
 	$(INSTALL_D) $(DESTDIR)$(DOCDIR)
 	cd doc && $(INSTALL_F) $(FILES_DOC) $(FILES_DOC_HTML) $(DESTDIR)$(DOCDIR)
 	$(INSTALL_D) $(DESTDIR)$(DOCDIR)/examples/include
