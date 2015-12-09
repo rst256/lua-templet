@@ -17,13 +17,7 @@ FILES_DOC_HTML = index.html INSTALL.html README.html examples.html reference.htm
 FILES_EXAMPLES_INCLUDE = include.lua
 FILES_EXAMPLES_INCLUDE_TEST = included.lua main.lua
 
-all: doc
-
-test:
-	@$(MAKE) -C test
-
-doc:
-	@$(MAKE) -C doc
+all: test
 
 install:
 	$(INSTALL_D) $(DESTDIR)$(LUADIR)
@@ -36,6 +30,10 @@ install:
 	cd examples/include/test && $(INSTALL_F) $(FILES_EXAMPLES_INCLUDE_TEST) $(DESTDIR)$(DOCDIR)/examples/include/test
 
 clean:
-	@$(MAKE) -C doc clean
 
-.PHONY: test doc install clean
+SUBDIRS = test doc
+
+.PHONY: $(SUBDIRS)
+
+$(SUBDIRS):
+	@$(MAKE) -C $@
