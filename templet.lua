@@ -58,7 +58,13 @@ end
 local function render_to_string(render, env)
   local t = {}
   local f = function(s)
-    if s ~= nil then insert(t, tostring(s)) end
+    if s ~= nil then 
+      if tonumber(s) then 
+        insert(t, tostring(env[tonumber(s)]))
+      else
+        insert(t, tostring(s)) 
+      end
+    end
   end
   local status, err = pcall(render_to_function, render, f, env)
   if not status then return error(err) end
